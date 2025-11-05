@@ -465,6 +465,7 @@
                       "type": "product-title",
                       "name": "t:names.product_title",
                       "settings": {
+                        "show_wishlist": true,
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -673,7 +674,7 @@
           "type": "image",
           "static": true,
           "settings": {
-            "image": "shopify://shop_images/ring_4_fdb62069-19e8-4a50-980e-b05f5a499ae6.jpg",
+            "image": "shopify://shop_images/ring_4.jpg",
             "link": "",
             "image_ratio": "adapt",
             "width": "fill",
@@ -700,7 +701,7 @@
           "type": "image",
           "static": true,
           "settings": {
-            "image": "shopify://shop_images/image_66_ea2b1d32-ef0e-4c61-9be4-0f4d1e15b756.png",
+            "image": "shopify://shop_images/image_66.png",
             "link": "",
             "image_ratio": "adapt",
             "width": "fill",
