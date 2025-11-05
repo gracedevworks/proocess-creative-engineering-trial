@@ -319,7 +319,7 @@ p:empty {
 .page-width-normal,
 .page-width-narrow,
 .page-width-content {
-  --page-margin: 16px;
+  --page-margin: 20px;
 }
 
 @media screen and (min-width: 750px) {
@@ -3471,10 +3471,10 @@ slideshow-controls:not([controls-on-media]) {
 slideshow-controls[controls-on-media] {
   z-index: var(--layer-raised);
 
-  &:has(.slideshow-controls__dots, .slideshow-controls__counter) {
+  /* &:has(.slideshow-controls__dots, .slideshow-controls__counter) {
     --color-foreground: #fff;
     --color-foreground-rgb: var(--color-white-rgb);
-  }
+  } */
 
   &[pagination-position='right'] {
     right: 0;
@@ -4284,3 +4284,72 @@ text-component {
   }
 }
 
+
+/* Custom CSS */
+
+/* Spacing */
+@media screen and (max-width: 749px) {
+  .spacing-style {
+    padding-block: calc(var(--padding-block-start-mobile, var(--padding-block-start)) + var(--section-top-offset, 0px)) var(--padding-block-end-mobile, var(--padding-block-end));
+    padding-inline: var(--padding-inline-start-mobile, var(--padding-inline-start)) var(--padding-inline-end-mobile, var(--padding-inline-end));
+  }
+}
+
+/* Layou Panel */
+@media screen and (max-width: 749px) {
+  .layout-panel-flex {
+    gap: var(--gap-mobile);
+  }
+}
+
+/* Mobile font size overrides */
+@media screen and (max-width: 749px) {
+  [style*="--font-size-mobile"],
+  [style*="--font-size-mobile"] > *  {
+    font-size: var(--font-size-mobile) !important;
+  }
+}
+
+/* Buttons */
+.button,
+.button-secondary,
+button.shopify-payment-button__button--unbranded {
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.15rem;
+}
+
+.slideshow-controls__counter {
+  background-color: transparent;
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.15rem;
+  font-variant-numeric: lining-nums;
+  backdrop-filter: none;
+}
+
+slideshow-controls[controls-on-media] {
+  bottom: 13px;
+}
+
+slideshow-arrows .slideshow-control {
+  width: 40px;
+  background: #1D0F0705;
+  border-radius: 40px;
+  height: 40px;
+  padding-inline: 0 !important;
+  color: var(--color-foreground);
+  vertical-align: middle;
+  margin-inline: 25px;
+
+  .svg-wrapper {
+    width: 0.75rem;
+    height: 0.75rem;
+    vertical-align: middle;
+
+    &>svg {
+      width: 0.75rem;
+      height: 0.75rem;
+    }
+  }
+}

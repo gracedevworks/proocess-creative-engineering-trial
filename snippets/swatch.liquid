@@ -20,6 +20,9 @@
     assign swatch_value = 'url(' | append: swatch_image_url | append: ')'
   elsif swatch.color
     assign swatch_value = 'rgb(' | append: swatch.color.rgb | append: ')'
+  elsif custom_swatch_value != null
+    assign swatch_image_url = custom_swatch_value | image_url: width: 150
+    assign swatch_value = 'url(' | append: swatch_image_url | append: ')'  
   endif
 
   case mode

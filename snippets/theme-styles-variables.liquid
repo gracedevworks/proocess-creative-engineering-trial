@@ -10,6 +10,20 @@
   {{ primary_font_italic | font_face: font_display: 'swap' }}
   {{ primary_font_bold_italic | font_face: font_display: 'swap' }}
 
+  {%- liquid
+    assign font_body_family = settings.type_body_font.family, settings.type_body_font.fallback_families
+    assign font_body_style = settings.type_body_font.style
+    assign font_body_weight = settings.type_body_font.weight
+  %}
+
+  {%- if settings.custom_body_font_enabled -%}
+    {%- liquid
+      assign font_body_family = settings.custom_type_body_font
+      assign font_body_style = 'normal'
+      assign font_body_weight = 400
+    -%}
+  {%- endif-%}
+
   {% if settings.type_subheading_font != settings.type_body_font %}
     {%- liquid
       assign secondary_font_bold = settings.type_subheading_font | font_modify: 'weight', 'bold'
@@ -22,6 +36,20 @@
     {{ secondary_font_italic | font_face: font_display: 'swap' }}
     {{ secondary_font_bold_italic | font_face: font_display: 'swap' }}
   {% endif %}
+
+  {%- liquid
+    assign font_subheading_family = settings.type_subheading_font.family, settings.type_subheading_font.fallback_families
+    assign font_subheading_style = settings.type_subheading_font.style
+    assign font_subheading_weight = settings.type_subheading_font.weight
+  %}
+
+  {%- if settings.custom_subheading_font_enabled -%}
+    {%- liquid
+      assign font_subheading_family = settings.custom_type_subheading_font
+      assign font_subheading_style = 'normal'
+      assign font_subheading_weight = 400
+    -%}
+  {%- endif -%}
 
   {% if settings.type_heading_font != settings.type_body_font and settings.type_heading_font != settings.type_subheading_font %}
     {%- liquid
@@ -36,6 +64,20 @@
     {{ tertiary_font_bold_italic | font_face: font_display: 'swap' }}
   {% endif %}
 
+  {%- liquid
+    assign font_heading_family = settings.type_heading_font.family, settings.type_heading_font.fallback_families
+    assign font_heading_style = settings.type_heading_font.style
+    assign font_heading_weight = settings.type_heading_font.weight
+  %}
+
+  {%- if settings.custom_heading_font_enabled -%}
+    {%- liquid
+      assign font_heading_family = settings.custom_type_heading_font
+      assign font_heading_style = 'normal'
+      assign font_heading_weight = 400
+    -%}
+  {%- endif -%}
+
   {% if settings.type_accent_font != settings.type_body_font and settings.type_accent_font != settings.type_subheading_font and settings.type_accent_font != settings.type_heading_font %}
     {%- liquid
       assign accent_font_bold = settings.type_accent_font | font_modify: 'weight', 'bold'
@@ -48,6 +90,20 @@
     {{ accent_font_italic | font_face: font_display: 'swap' }}
     {{ accent_font_bold_italic | font_face: font_display: 'swap' }}
   {% endif %}
+
+  {%- liquid
+    assign font_accent_family = settings.type_accent_font.family, settings.type_accent_font.fallback_families
+    assign font_accent_style = settings.type_accent_font.style
+    assign font_accent_weight = settings.type_accent_font.weight
+  %}
+
+  {%- if settings.custom_accent_font_enabled -%}
+    {%- liquid
+      assign font_accent_family = settings.custom_type_accent_font
+      assign font_accent_style = 'normal'
+      assign font_accent_weight = 400
+    -%}
+  {%- endif -%}
 
   :root {
     /* Page Layout */
@@ -81,18 +137,18 @@
     --letter-spacing-md: 0.13em;
 
     /* Font families */
-    --font-body--family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
-    --font-body--style: {{ settings.type_body_font.style }};
-    --font-body--weight: {{ settings.type_body_font.weight }};
-    --font-subheading--family: {{ settings.type_subheading_font.family }}, {{ settings.type_subheading_font.fallback_families }};
-    --font-subheading--style: {{ settings.type_subheading_font.style }};
-    --font-subheading--weight: {{ settings.type_subheading_font.weight }};
-    --font-heading--family: {{ settings.type_heading_font.family }}, {{ settings.type_heading_font.fallback_families }};
-    --font-heading--style: {{ settings.type_heading_font.style }};
-    --font-heading--weight: {{ settings.type_heading_font.weight }};
-    --font-accent--family: {{ settings.type_accent_font.family }}, {{ settings.type_accent_font.fallback_families }};
-    --font-accent--style: {{ settings.type_accent_font.style }};
-    --font-accent--weight: {{ settings.type_accent_font.weight }};
+    --font-body--family: {{ font_body_family }}; 
+    --font-body--style: {{ font_body_style }};
+    --font-body--weight: {{ font_body_weight }};
+    --font-subheading--family: {{ font_subheading_family }};
+    --font-subheading--style: {{ font_subheading_style }};
+    --font-subheading--weight: {{ font_subheading_weight }};
+    --font-heading--family: {{ font_heading_family }};
+    --font-heading--style: {{ font_heading_style }};
+    --font-heading--weight: {{ font_heading_weight }};
+    --font-accent--family: {{ font_accent_family }};
+    --font-accent--style: {{ font_accent_style }};
+    --font-accent--weight: {{ font_accent_weight }};
 
     /* Margin sizes */
     --font-h1--spacing: 0.25em;
@@ -141,9 +197,13 @@
     --letter-spacing--display-normal: 0em;
     --letter-spacing--display-loose: 0.03em;
 
-    --letter-spacing--heading-tight: -0.03em;
+    /*--letter-spacing--heading-tight: -0.03em;
     --letter-spacing--heading-normal: 0em;
-    --letter-spacing--heading-loose: 0.03em;
+    --letter-spacing--heading-loose: 0.03em;*/
+
+    --letter-spacing--heading-tight: -0.2;
+    --letter-spacing--heading-normal: 0;
+    --letter-spacing--heading-loose: 0.2;
 
     --letter-spacing--body-tight: -0.03em;
     --letter-spacing--body-normal: 0em;
@@ -154,11 +214,11 @@
 
     --line-height--display-tight: 1;
     --line-height--display-normal: 1.1;
-    --line-height--display-loose: 1.2;
+    --line-height--display-loose: 2;
 
     --line-height--heading-tight: 1.15;
     --line-height--heading-normal: 1.25;
-    --line-height--heading-loose: 1.35;
+    --line-height--heading-loose: 2;
 
     --line-height--body-tight: 1.2;
     --line-height--body-normal: 1.4;
@@ -174,9 +234,12 @@
         Build an array of font sizes and sort it
       endcomment
       assign font_size_values = ''
+      assign font_size_values_mobile = ''
       for font_size in font_sizes
         assign size_setting = 'type_size_[font_size]' | replace: '[font_size]', font_size
         assign size_setting_value = settings[size_setting] | times: 1
+        assign size_setting_mobile = 'type_size_[font_size]_mobile' | replace: '[font_size]', font_size
+        assign size_setting_value_mobile = settings[size_setting_mobile] | times: 1
 
         comment
           If the font size is less than 100, pad it with a 0
@@ -187,6 +250,17 @@
         endif
 
         assign font_size_values = font_size_values | append: '[size_setting_value],' | replace: '[size_setting_value]', size_setting_value
+
+        comment
+          Use mobile font size if available, otherwise use desktop size
+        endcomment
+        if size_setting_value_mobile > 0
+          assign mobile_size = size_setting_value_mobile
+        else
+          assign mobile_size = size_setting_value
+        endif
+        assign font_size_values_mobile = font_size_values_mobile | append: '[mobile_size],' | replace: '[mobile_size]', mobile_size
+
       endfor
 
       assign font_size_values = font_size_values | split: ',' | uniq | sort_natural
@@ -200,6 +274,18 @@
         assign font_size_value = settings[size_setting] | times: 1
         assign font_size_string = '[font_size_value]' | replace: '[font_size_value]', font_size_value
         assign index = font_size_values | find_index: font_size_string
+
+        assign size_setting_mobile = 'type_size_[font_size]_mobile' | replace: '[font_size]', font_size
+        assign font_size_mobile_value = settings[size_setting_mobile] | times: 1
+
+        comment
+          Use mobile font size if available, otherwise use desktop size
+        endcomment
+        if font_size_mobile_value > 0
+          assign mobile_size = font_size_mobile_value
+        else
+          assign mobile_size = font_size_value
+        endif
 
         if font_size_value >= fluid_size_cutoff
 
@@ -238,7 +324,11 @@
           echo '--font-size--[font_size]: clamp([fluid_size_min_rem]rem, [fluid_size]vw, [fluid_size_max_rem]rem);' | replace: '[font_size]', font_size | replace: '[fluid_size_min_rem]', fluid_size_min_rem | replace: '[fluid_size]', fluid_size | replace: '[fluid_size_max_rem]', fluid_size_max_rem
         else
           assign fluid_size_rem = font_size_value | divided_by: 16.0
-          echo '--font-size--[font_size]: [fluid_size_rem]rem;' | replace: '[font_size]', font_size | replace: '[fluid_size_rem]', fluid_size_rem
+          assign mobile_size_rem = mobile_size | divided_by: 16.0
+
+          echo '--font-size--[font_size]: [mobile_size_rem]rem;' | replace: '[font_size]', font_size | replace: '[mobile_size_rem]', mobile_size_rem
+          echo '@media screen and (min-width: 750px) { --font-size--[font_size]: [fluid_size_rem]rem; }' | replace: '[font_size]', font_size | replace: '[fluid_size_rem]', fluid_size_rem
+       
         endif
       endfor
 
@@ -256,7 +346,10 @@
           assign preset_letter_spacing = 'body-normal'
 
           echo '--font-[preset_name]--weight: [preset_weight];' | replace: '[preset_name]', preset_name | replace: '[preset_weight]', preset_weight
-          echo '--font-[preset_name]--letter-spacing: var(--letter-spacing--[preset_letter_spacing]);' | replace: '[preset_name]', preset_name | replace: '[preset_letter_spacing]', preset_letter_spacing
+          echo '--font-[preset_name]--letter-spacing: calc(var(--font-[preset_name]--size) * var(--letter-spacing--[preset_letter_spacing]));' | replace: '[preset_name]', preset_name | replace: '[preset_letter_spacing]', 
+          comment
+          echo '--font-[preset_name]--letter-spacing: var(--letter-spacing--[preset_letter_spacing]);' | replace: '[preset_name]', preset_name | replace: '[preset_letter_spacing]', 
+          endcomment
         else
           assign preset_font_id = 'type_font_[preset_name]' | replace: '[preset_name]', preset_name
           assign preset_font = '--font-[preset_font]--family' | replace: '[preset_font]', settings[preset_font_id]
@@ -266,7 +359,10 @@
           assign preset_letter_spacing = 'type_letter_spacing_[preset_name]' | replace: '[preset_name]', preset_name
 
           echo '--font-[preset_name]--weight: var([preset_weight]);' | replace: '[preset_name]', preset_name | replace: '[preset_weight]', preset_weight
+          echo '--font-[preset_name]--letter-spacing: calc(var(--font-[preset_name]--size) * var(--letter-spacing--[preset_letter_spacing]));' | replace: '[preset_name]', preset_name | replace: '[preset_letter_spacing]', settings[preset_letter_spacing]
+          comment
           echo '--font-[preset_name]--letter-spacing: var(--letter-spacing--[preset_letter_spacing]);' | replace: '[preset_name]', preset_name | replace: '[preset_letter_spacing]', settings[preset_letter_spacing]
+          endcomment
         endif
 
         echo '--font-[preset_name]--size: var([preset_size]);' | replace: '[preset_name]', preset_name | replace: '[preset_size]', preset_size

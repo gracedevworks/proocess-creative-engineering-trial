@@ -20,12 +20,17 @@
     spacing-style
     size-style
     {% if settings.inherit_color_scheme == false %} color-{{ settings.color_scheme }}{% endif %}
+    {% if settings.max_width == 'custom' %} group-block--max-width{% endif %}
     {{ class }}
   "
   style="
     {% render 'border-override', settings: settings %}
     {% render 'spacing-style', settings: settings %}
+    {% render 'spacing-style-mobile', settings: settings, suffix: 'mobile', disable_scaling: true %}
     {% render 'size-style', settings: settings %}
+    {% if settings.max_width == 'custom' %}
+      --group-block-max-width: {{ settings.custom_max_width }}px;
+    {% endif %}
     {{ style }}
   "
   {{ shopify_attributes }}
@@ -86,5 +91,10 @@
   /* Needs the .group-block__link ~ to be specific enough to take effect. */
   .group-block__link ~ .group-block-content--design-mode {
     pointer-events: auto;
+  }
+
+  /* Custom CSS */
+  .group-block--max-width {
+    max-width: var(--group-block-max-width);
   }
 {% endstylesheet %}

@@ -12,6 +12,21 @@
     {% render 'account-drawer' %}
   {% endif %}
 
+  {%- if section.settings.show_wishlist -%}
+    <a
+      href="#"
+      class="header-actions__action action__wishlist"
+      aria-label="{{ 'accessibility.wishlist' | t }}"
+    >
+      <span
+        class="svg-wrapper"
+        aria-hidden="true"
+      >
+        {{ 'icon-wishlist.svg' | inline_asset_content }}
+      </span>
+    </a>
+  {%- endif -%}
+
   {% if settings.cart_type == 'drawer' and template.name != 'cart' %}
     {% render 'cart-drawer' %}
   {% else %}
@@ -267,5 +282,10 @@
 
   .cart-bubble--animating .cart-bubble__text {
     animation: cartBubbleSlideIn var(--animation-speed) var(--animation-easing);
+  }
+
+  /* Custom CSS */
+  .header-actions__action.search-modal__button svg {
+    width: 18px;
   }
 {% endstylesheet %}
