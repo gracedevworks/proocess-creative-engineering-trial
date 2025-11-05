@@ -44,6 +44,16 @@
             else
               assign variant_style = 'swatch'
             endif
+          elsif swatch_count == 0 and block_settings.show_swatches
+            for item in shop.metaobjects['ring_option_2'].values
+              if product_option.values contains item.label
+                if block_settings.variant_style == 'dropdown'
+                  assign variant_style = 'swatch_dropdown'
+                else
+                  assign variant_style = 'swatch'
+                endif
+              endif
+            endfor
           endif
 
           if variant_style == 'buttons' and settings.variant_button_width == 'equal-width-buttons'
@@ -56,17 +66,24 @@
         {%- if variant_style == 'swatch' or block_settings.variant_style == 'buttons' -%}
           {%- assign fieldset_index = forloop.index0 -%}
           <fieldset
-            class="variant-option variant-option--buttons{% if variant_style == 'swatch' %} variant-option--swatches{% else %} variant-option--{{ settings.variant_button_width }}{% endif %}"
+            class="variant-option variant-option--buttons{% if variant_style == 'swatch' %} variant-option--swatches{% else %} variant-option--{{ settings.variant_button_width }}{% endif %}{% if block_settings.no_swatch_show_link %} variant-option--link{% endif %}"
             data-fieldset-index="{{ fieldset_index }}"
             ref="fieldsets[]"
             {{ option_id_attribute }}
           >
-            <legend>
+            <legend {% unless block_settings.show_label %}class="hidden"{% endunless %}>
               {{ product_option.name | escape -}}
               {%- if variant_style == 'swatch' -%}
                 <span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
               {%- endif %}
             </legend>
+            {%- if block_settings.show_label == false and variant_style == 'swatch' -%}
+              <legend class="swatch-option-names">
+                {%- for product_option_value in product_option.values -%}
+                <span{% if product_option_value.selected %} class="swatch-option-active"{% endif %}>{{ product_option_value.name }}</span>
+                {%- endfor -%}
+              </legend>
+              {%- endif -%}
             {%- for product_option_value in product_option.values -%}
               {% if product_option_value.size > longest_value and option_id_attribute %}
                 {% assign longest_value = product_option_value.size %}
@@ -103,17 +120,26 @@
                   {% liquid
                     assign featured_media = product_option_value.variant.featured_media
 
+                    assign custom_swatch_value = null
+                    if swatch_count == 0
+                      for item in shop.metaobjects['ring_option_2'].values
+                        if product_option_value == item.label
+                          assign custom_swatch_value = item.image
+                        endif
+                      endfor
+                    endif
+
                     # If the variant has no featured media, and we have a combined listing product, then fall back to
                     # using the featured media of the child product that is linked to this option value.
                     if featured_media == blank and product_option_value.product_url
                       assign featured_media = product_option_value.variant.product.featured_media
                     endif
                   %}
-
                   {% render 'swatch',
                     swatch: product_option_value.swatch,
                     variant_image: featured_media,
-                    mode: 'unscaled'
+                    mode: 'unscaled',
+                    custom_swatch_value: custom_swatch_value
                   %}
                 {% else %}
                   {% if product_option_value.available == true %}
@@ -663,5 +689,27 @@
   .variant-picker--right .variant-option {
     text-align: right;
     justify-content: right;
+  }
+
+  /* Custom CSS */
+  .variant-picker__form {
+    gap: 48px;
+
+    @media screen and (max-width: 749px) {
+      gap: 40px;
+    }
+  }
+  .variant-option__button-label--has-swatch:has(:checked) {
+    outline: 0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+  }
+  .swatch-option-names {
+    gap: 8px;
+    display: flex;
+    color: rgb(var(--color-foreground-rgb) / 0.35);
+  }
+  .swatch-option-names .swatch-option-active {
+    color: rgb(var(--color-foreground-rgb));
   }
 {% endstylesheet %}

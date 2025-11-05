@@ -25,6 +25,13 @@
       "content": "t:content.resource_reference_product_title"
     },
     {
+      "type": "checkbox",
+      "id": "show_wishlist",
+      "label": "Wishlist",
+      "info": "Please use an app for this",
+      "default": true
+    },
+    {
       "type": "header",
       "content": "t:content.layout"
     },
@@ -388,6 +395,46 @@
       "type": "range",
       "id": "padding-inline-end",
       "label": "t:settings.right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start-mobile",
+      "label": "Top - mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end-mobile",
+      "label": "Bottom - mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start-mobile",
+      "label": "Left - mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end-mobile",
+      "label": "Right - mobile",
       "min": 0,
       "max": 100,
       "step": 1,

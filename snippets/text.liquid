@@ -82,13 +82,41 @@
 %}
 
 {% if fallback_text != blank and plain_text == blank %}
+  {%- if block_settings.show_wishlist -%}
+    <div class="text-with-wishlist">
+      <div {{ attributes }}>
+        {{ fallback_text }}
+      </div>
+      <span
+        class="svg-wrapper text-wishlist"
+        aria-hidden="true"
+      >
+        {{ 'icon-wishlist.svg' | inline_asset_content }}
+      </span>
+    </div>
+  {%- else -%}
   <div {{ attributes }}>
     {{ fallback_text }}
   </div>
+  {% endif %}
 {% elsif plain_text != blank %}
+  {%- if block_settings.show_wishlist -%}
+    <div class="text-with-wishlist">
+      <{{ element }} {{ attributes }}>
+        {{ block.settings.text }}
+      </{{ element }}>
+      <span
+        class="svg-wrapper text-wishlist"
+        aria-hidden="true"
+      >
+        {{ 'icon-wishlist.svg' | inline_asset_content }}
+      </span>
+    </div>
+  {%- else -%}
   <{{ element }} {{ attributes }}>
     {{ block.settings.text }}
   </{{ element }}>
+  {%- endif -%}
 {% endif %}
 
 {% stylesheet %}
@@ -214,5 +242,21 @@
   .custom-color,
   .custom-color > :is(h1, h2, h3, h4, h5, h6, p, *) {
     color: var(--color);
+  }
+
+  /* Custom CSS */
+  .text-with-wishlist {
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+    align-items: center;
+
+    &:has(~[style="--width: fit-content;"]) {
+      justify-content: unset;
+    }
+
+    .svg-wrapper {
+      color: var(--color-foreground);
+    }
   }
 {% endstylesheet %}

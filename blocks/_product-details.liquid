@@ -64,6 +64,11 @@
       align-self: var(--details-position, 'flex-start');
     }
   }
+
+  /* Customn CSS */
+  .product-details:has(>.group-block--max-width) {
+    justify-content: flex-start;
+  }
 {% endstylesheet %}
 
 {% schema %}
@@ -129,6 +134,9 @@
     },
     {
       "type": "product-custom-property"
+    }, 
+    {
+      "type": "product-custom-recommendations"
     }
   ],
   "tag": null,
@@ -167,6 +175,30 @@
       "unit": "%",
       "default": 100,
       "visible_if": "{{ block.settings.width == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "max_width",
+      "label": "Max width",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "number",
+      "id": "custom_max_width",
+      "label": "Custom max width",
+      "info": "Unit: px",
+      "default": 480,
+      "visible_if": "{{ block.settings.max_width == 'custom' }}"
     },
     {
       "type": "select",
@@ -425,6 +457,46 @@
       "type": "range",
       "id": "padding-inline-end",
       "label": "t:settings.right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start-mobile",
+      "label": "t:settings.top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end-mobile",
+      "label": "t:settings.bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start-mobile",
+      "label": "t:settings.left_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end-mobile",
+      "label": "t:settings.right_mobile",
       "min": 0,
       "max": 100,
       "step": 1,

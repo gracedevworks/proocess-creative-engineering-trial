@@ -96,6 +96,7 @@
   style="
     {% render 'border-override', settings: block_settings %}
     {% render 'spacing-style', settings: block_settings %}
+    {% render 'spacing-style-mobile', settings: block_settings, suffix: 'mobile', disable_scaling: true %} 
     --gallery-aspect-ratio: {{ ratio }};
   "
   data-product-id="{{ product.id }}"

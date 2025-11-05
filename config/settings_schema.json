@@ -355,7 +355,30 @@
         "type": "font_picker",
         "id": "type_body_font",
         "default": "work_sans_n4",
-        "label": "t:options.body"
+        "label": "t:options.body",
+        "visible_if": "{{ settings.custom_body_font_enabled != true}}",
+      },
+      {
+        "type": "checkbox",
+        "id": "custom_body_font_enabled",
+        "label": "Enable custom body font"
+      },
+      {
+        "type": "select",
+        "id": "custom_type_body_font",
+        "label": "Custom body font",
+        "visible_if": "{{ settings.custom_body_font_enabled == true}}",
+        "options": [
+          {
+            "value": "Matter Trial Regular",
+            "label": "Matter Trial Regular"
+          },
+          {
+            "value": "Amiri",
+            "label": "Amiri"
+          }
+        ],
+        "default": "Matter Trial Regular"
       },
       {
         "type": "font_picker",
@@ -364,16 +387,82 @@
         "label": "t:options.subheading"
       },
       {
+        "type": "checkbox",
+        "id": "custom_subheading_font_enabled",
+        "label": "Enable custom subheading font"
+      },
+      {
+        "type": "select",
+        "id": "custom_type_subheading_font",
+        "label": "Custom subheading font",
+        "visible_if": "{{ settings.custom_subheading_font_enabled == true}}",
+        "options": [
+          {
+            "value": "Matter Trial Regular",
+            "label": "Matter Trial Regular"
+          },
+          {
+            "value": "Amiri",
+            "label": "Amiri"
+          }
+        ],
+        "default": "Matter Trial Regular"
+      },
+      {
         "type": "font_picker",
         "id": "type_heading_font",
         "default": "anonymous_pro_n4",
         "label": "t:options.heading"
       },
       {
+        "type": "checkbox",
+        "id": "custom_heading_font_enabled",
+        "label": "Enable custom heading font"
+      },
+      {
+        "type": "select",
+        "id": "custom_type_heading_font",
+        "label": "Custom heading font",
+        "visible_if": "{{ settings.custom_heading_font_enabled == true}}",
+        "options": [
+          {
+            "value": "Matter Trial Regular",
+            "label": "Matter Trial Regular"
+          },
+          {
+            "value": "Amiri",
+            "label": "Amiri"
+          }
+        ],
+        "default": "Matter Trial Regular"
+      },
+      {
         "type": "font_picker",
         "id": "type_accent_font",
         "default": "anonymous_pro_n4",
         "label": "t:options.accent"
+      },
+      {
+        "type": "checkbox",
+        "id": "custom_accent_font_enabled",
+        "label": "Enable custom accent font"
+      },
+      {
+        "type": "select",
+        "id": "custom_type_accent_font",
+        "label": "Custom accent font",
+        "visible_if": "{{ settings.custom_accent_font_enabled == true}}",
+        "options": [
+          {
+            "value": "Matter Trial Regular",
+            "label": "Matter Trial Regular"
+          },
+          {
+            "value": "Amiri",
+            "label": "Amiri"
+          }
+        ],
+        "default": "Matter Trial Regular"
       },
       {
         "type": "header",
@@ -411,6 +500,58 @@
           {
             "value": "18",
             "label": "18px"
+          }
+        ],
+        "default": "14"
+      },
+      {
+        "type": "select",
+        "id": "type_size_paragraph_mobile",
+        "label": "t:settings.size_mobile",
+        "options": [
+          {
+            "value": "10",
+            "label": "10px"
+          },
+          {
+            "value": "11",
+            "label": "11px"
+          },
+          {
+            "value": "12",
+            "label": "12px"
+          },
+          {
+            "value": "13",
+            "label": "13px"
+          },
+          {
+            "value": "14",
+            "label": "14px"
+          },
+          {
+            "value": "15",
+            "label": "15px"
+          },
+          {
+            "value": "16",
+            "label": "16px"
+          },
+          {
+            "value": "17",
+            "label": "17px"
+          },
+          {
+            "value": "18",
+            "label": "18px"
+          },
+          {
+            "value": "19",
+            "label": "19px"
+          },
+          {
+            "value": "20",
+            "label": "20px"
           }
         ],
         "default": "14"
@@ -526,6 +667,82 @@
           }
         ],
         "default": "72"
+      },
+      {
+        "type": "select",
+        "id": "type_size_h1_mobile",
+        "label": "t:settings.size_mobile",
+        "options": [
+          {
+            "value": "10",
+            "label": "10px"
+          },
+          {
+            "value": "12",
+            "label": "12px"
+          },
+          {
+            "value": "14",
+            "label": "14px"
+          },
+          {
+            "value": "16",
+            "label": "16px"
+          },
+          {
+            "value": "18",
+            "label": "18px"
+          },
+          {
+            "value": "20",
+            "label": "20px"
+          },
+          {
+            "value": "24",
+            "label": "24px"
+          },
+          {
+            "value": "32",
+            "label": "32px"
+          },
+          {
+            "value": "40",
+            "label": "40px"
+          },
+          {
+            "value": "48",
+            "label": "48px"
+          },
+          {
+            "value": "56",
+            "label": "56px"
+          },
+          {
+            "value": "60",
+            "label": "60px"
+          },
+          {
+            "value": "72",
+            "label": "72px"
+          },
+          {
+            "value": "88",
+            "label": "88px"
+          },
+          {
+            "value": "120",
+            "label": "120px"
+          },
+          {
+            "value": "152",
+            "label": "152px"
+          },
+          {
+            "value": "184",
+            "label": "184px"
+          }
+        ],
+        "default": "48"
       },
       {
         "type": "select",
@@ -674,6 +891,82 @@
           }
         ],
         "default": "48"
+      },
+      {
+        "type": "select",
+        "id": "type_size_h2_mobile",
+        "label": "t:settings.size_mobile",
+        "options": [
+          {
+            "value": "10",
+            "label": "10px"
+          },
+          {
+            "value": "12",
+            "label": "12px"
+          },
+          {
+            "value": "14",
+            "label": "14px"
+          },
+          {
+            "value": "16",
+            "label": "16px"
+          },
+          {
+            "value": "18",
+            "label": "18px"
+          },
+          {
+            "value": "20",
+            "label": "20px"
+          },
+          {
+            "value": "24",
+            "label": "24px"
+          },
+          {
+            "value": "32",
+            "label": "32px"
+          },
+          {
+            "value": "40",
+            "label": "40px"
+          },
+          {
+            "value": "48",
+            "label": "48px"
+          },
+          {
+            "value": "56",
+            "label": "56px"
+          },
+          {
+            "value": "60",
+            "label": "60px"
+          },
+          {
+            "value": "72",
+            "label": "72px"
+          },
+          {
+            "value": "88",
+            "label": "88px"
+          },
+          {
+            "value": "120",
+            "label": "120px"
+          },
+          {
+            "value": "152",
+            "label": "152px"
+          },
+          {
+            "value": "184",
+            "label": "184px"
+          }
+        ],
+        "default": "32"
       },
       {
         "type": "select",
@@ -833,6 +1126,82 @@
       },
       {
         "type": "select",
+        "id": "type_size_h3_mobile",
+        "label": "t:settings.size_mobile",
+        "options": [
+          {
+            "value": "10",
+            "label": "10px"
+          },
+          {
+            "value": "12",
+            "label": "12px"
+          },
+          {
+            "value": "14",
+            "label": "14px"
+          },
+          {
+            "value": "16",
+            "label": "16px"
+          },
+          {
+            "value": "18",
+            "label": "18px"
+          },
+          {
+            "value": "20",
+            "label": "20px"
+          },
+          {
+            "value": "24",
+            "label": "24px"
+          },
+          {
+            "value": "32",
+            "label": "32px"
+          },
+          {
+            "value": "40",
+            "label": "40px"
+          },
+          {
+            "value": "48",
+            "label": "48px"
+          },
+          {
+            "value": "56",
+            "label": "56px"
+          },
+          {
+            "value": "60",
+            "label": "60px"
+          },
+          {
+            "value": "72",
+            "label": "72px"
+          },
+          {
+            "value": "88",
+            "label": "88px"
+          },
+          {
+            "value": "120",
+            "label": "120px"
+          },
+          {
+            "value": "152",
+            "label": "152px"
+          },
+          {
+            "value": "184",
+            "label": "184px"
+          }
+        ],
+        "default": "24"
+      },
+      {
+        "type": "select",
         "id": "type_line_height_h3",
         "label": "t:settings.line_height",
         "options": [
@@ -986,6 +1355,82 @@
           }
         ],
         "default": "24"
+      },
+      {
+        "type": "select",
+        "id": "type_size_h4_mobile",
+        "label": "t:settings.size_mobile",
+        "options": [
+          {
+            "value": "10",
+            "label": "10px"
+          },
+          {
+            "value": "12",
+            "label": "12px"
+          },
+          {
+            "value": "14",
+            "label": "14px"
+          },
+          {
+            "value": "16",
+            "label": "16px"
+          },
+          {
+            "value": "18",
+            "label": "18px"
+          },
+          {
+            "value": "20",
+            "label": "20px"
+          },
+          {
+            "value": "24",
+            "label": "24px"
+          },
+          {
+            "value": "32",
+            "label": "32px"
+          },
+          {
+            "value": "40",
+            "label": "40px"
+          },
+          {
+            "value": "48",
+            "label": "48px"
+          },
+          {
+            "value": "56",
+            "label": "56px"
+          },
+          {
+            "value": "60",
+            "label": "60px"
+          },
+          {
+            "value": "72",
+            "label": "72px"
+          },
+          {
+            "value": "88",
+            "label": "88px"
+          },
+          {
+            "value": "120",
+            "label": "120px"
+          },
+          {
+            "value": "152",
+            "label": "152px"
+          },
+          {
+            "value": "184",
+            "label": "184px"
+          }
+        ],
+        "default": "20"
       },
       {
         "type": "select",
@@ -1145,6 +1590,82 @@
       },
       {
         "type": "select",
+        "id": "type_size_h5_mobile",
+        "label": "t:settings.size_mobile",
+        "options": [
+          {
+            "value": "10",
+            "label": "10px"
+          },
+          {
+            "value": "12",
+            "label": "12px"
+          },
+          {
+            "value": "14",
+            "label": "14px"
+          },
+          {
+            "value": "16",
+            "label": "16px"
+          },
+          {
+            "value": "18",
+            "label": "18px"
+          },
+          {
+            "value": "20",
+            "label": "20px"
+          },
+          {
+            "value": "24",
+            "label": "24px"
+          },
+          {
+            "value": "32",
+            "label": "32px"
+          },
+          {
+            "value": "40",
+            "label": "40px"
+          },
+          {
+            "value": "48",
+            "label": "48px"
+          },
+          {
+            "value": "56",
+            "label": "56px"
+          },
+          {
+            "value": "60",
+            "label": "60px"
+          },
+          {
+            "value": "72",
+            "label": "72px"
+          },
+          {
+            "value": "88",
+            "label": "88px"
+          },
+          {
+            "value": "120",
+            "label": "120px"
+          },
+          {
+            "value": "152",
+            "label": "152px"
+          },
+          {
+            "value": "184",
+            "label": "184px"
+          }
+        ],
+        "default": "16"
+      },
+      {
+        "type": "select",
         "id": "type_line_height_h5",
         "label": "t:settings.line_height",
         "options": [
@@ -1298,6 +1819,82 @@
           }
         ],
         "default": "16"
+      },
+      {
+        "type": "select",
+        "id": "type_size_h6_mobile",
+        "label": "t:settings.size_mobile",
+        "options": [
+          {
+            "value": "10",
+            "label": "10px"
+          },
+          {
+            "value": "12",
+            "label": "12px"
+          },
+          {
+            "value": "14",
+            "label": "14px"
+          },
+          {
+            "value": "16",
+            "label": "16px"
+          },
+          {
+            "value": "18",
+            "label": "18px"
+          },
+          {
+            "value": "20",
+            "label": "20px"
+          },
+          {
+            "value": "24",
+            "label": "24px"
+          },
+          {
+            "value": "32",
+            "label": "32px"
+          },
+          {
+            "value": "40",
+            "label": "40px"
+          },
+          {
+            "value": "48",
+            "label": "48px"
+          },
+          {
+            "value": "56",
+            "label": "56px"
+          },
+          {
+            "value": "60",
+            "label": "60px"
+          },
+          {
+            "value": "72",
+            "label": "72px"
+          },
+          {
+            "value": "88",
+            "label": "88px"
+          },
+          {
+            "value": "120",
+            "label": "120px"
+          },
+          {
+            "value": "152",
+            "label": "152px"
+          },
+          {
+            "value": "184",
+            "label": "184px"
+          }
+        ],
+        "default": "14"
       },
       {
         "type": "select",
