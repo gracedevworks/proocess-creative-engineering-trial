@@ -46,8 +46,8 @@
           "settings": {
             "width": "fill",
             "custom_width": 57,
-            "max_width": "custom",
-            "custom_max_width": 580,
+            "max_width": "none",
+            "custom_max_width": 480,
             "width_mobile": "fill",
             "custom_width_mobile": 100,
             "height": "fit",
@@ -67,8 +67,8 @@
             "padding-block-end": 24,
             "padding-inline-start": 50,
             "padding-inline-end": 50,
-            "padding-block-start-mobile": 25,
-            "padding-block-end-mobile": 25,
+            "padding-block-start-mobile": 0,
+            "padding-block-end-mobile": 0,
             "padding-inline-start-mobile": 0,
             "padding-inline-end-mobile": 0
           },
@@ -98,7 +98,7 @@
                 "padding-inline-start": 0,
                 "padding-inline-end": 0,
                 "padding-block-start-mobile": 0,
-                "padding-block-end-mobile": 20,
+                "padding-block-end-mobile": 0,
                 "padding-inline-start-mobile": 0,
                 "padding-inline-end-mobile": 0
               },
@@ -145,7 +145,7 @@
                 "padding-inline-start": 0,
                 "padding-inline-end": 0,
                 "padding-block-start-mobile": 0,
-                "padding-block-end-mobile": 10,
+                "padding-block-end-mobile": 0,
                 "padding-inline-start-mobile": 0,
                 "padding-inline-end-mobile": 0
               },
@@ -175,7 +175,7 @@
                     "padding-inline-start": 0,
                     "padding-inline-end": 0,
                     "padding-block-start-mobile": 0,
-                    "padding-block-end-mobile": 20,
+                    "padding-block-end-mobile": 0,
                     "padding-inline-start-mobile": 0,
                     "padding-inline-end-mobile": 0
                   },
@@ -218,7 +218,7 @@
               "settings": {
                 "variant_style": "buttons",
                 "show_swatches": true,
-                "show_label": false,
+                "show_label": true,
                 "alignment": "left",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -465,6 +465,7 @@
                       "type": "product-title",
                       "name": "t:names.product_title",
                       "settings": {
+                        "show_wishlist": true,
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -483,7 +484,7 @@
                         "padding-block-end": 0,
                         "padding-inline-start": 0,
                         "padding-inline-end": 0,
-                        "padding-block-start-mobile": 10,
+                        "padding-block-start-mobile": 0,
                         "padding-block-end-mobile": 0,
                         "padding-inline-start-mobile": 0,
                         "padding-inline-end-mobile": 0
@@ -626,7 +627,7 @@
                 "padding-inline-start": 0,
                 "padding-inline-end": 0,
                 "padding-block-start-mobile": 0,
-                "padding-block-end-mobile": 30,
+                "padding-block-end-mobile": 0,
                 "padding-inline-start-mobile": 0,
                 "padding-inline-end-mobile": 0
               },
@@ -673,7 +674,7 @@
           "type": "image",
           "static": true,
           "settings": {
-            "image": "shopify://shop_images/ring_4_fdb62069-19e8-4a50-980e-b05f5a499ae6.jpg",
+            "image": "shopify://shop_images/ring_4.jpg",
             "link": "",
             "image_ratio": "adapt",
             "width": "fill",
@@ -690,7 +691,7 @@
             "padding-inline-start": 0,
             "padding-inline-end": 0,
             "padding-block-start-mobile": 0,
-            "padding-block-end-mobile": 60,
+            "padding-block-end-mobile": 0,
             "padding-inline-start-mobile": 0,
             "padding-inline-end-mobile": 0
           },
@@ -700,7 +701,7 @@
           "type": "image",
           "static": true,
           "settings": {
-            "image": "shopify://shop_images/image_66_ea2b1d32-ef0e-4c61-9be4-0f4d1e15b756.png",
+            "image": "shopify://shop_images/image_66.png",
             "link": "",
             "image_ratio": "adapt",
             "width": "fill",
@@ -716,7 +717,7 @@
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0,
-            "padding-block-start-mobile": 60,
+            "padding-block-start-mobile": 0,
             "padding-block-end-mobile": 0,
             "padding-inline-start-mobile": 0,
             "padding-inline-end-mobile": 0
@@ -835,7 +836,7 @@
                 "padding-inline-start": 0,
                 "padding-inline-end": 0,
                 "padding-block-start-mobile": 0,
-                "padding-block-end-mobile": 15,
+                "padding-block-end-mobile": 0,
                 "padding-inline-start-mobile": 0,
                 "padding-inline-end-mobile": 0
               },
@@ -897,7 +898,7 @@
                     "type_preset": "custom",
                     "font": "var(--font-heading--family)",
                     "font_size": "4.5rem",
-                    "font_size_mobile": "2rem",
+                    "font_size_mobile": "1rem",
                     "line_height": "normal",
                     "letter_spacing": "normal",
                     "case": "none",
@@ -911,7 +912,7 @@
                     "padding-inline-start": 0,
                     "padding-inline-end": 0,
                     "padding-block-start-mobile": 0,
-                    "padding-block-end-mobile": 30,
+                    "padding-block-end-mobile": 0,
                     "padding-inline-start-mobile": 0,
                     "padding-inline-end-mobile": 0
                   },
@@ -932,7 +933,7 @@
                     "width": "fill",
                     "custom_width": 100,
                     "max_width": "none",
-                    "custom_max_width": 450,
+                    "custom_max_width": 480,
                     "width_mobile": "fill",
                     "custom_width_mobile": 100,
                     "height": "fit",
@@ -977,8 +978,8 @@
                         "gap": 12,
                         "width": "fill",
                         "custom_width": 100,
-                        "max_width": "custom",
-                        "custom_max_width": 450,
+                        "max_width": "none",
+                        "custom_max_width": 480,
                         "width_mobile": "fill",
                         "custom_width_mobile": 100,
                         "height": "fit",
@@ -1034,7 +1035,7 @@
                             "padding-inline-start": 0,
                             "padding-inline-end": 0,
                             "padding-block-start-mobile": 0,
-                            "padding-block-end-mobile": 30,
+                            "padding-block-end-mobile": 0,
                             "padding-inline-start-mobile": 0,
                             "padding-inline-end-mobile": 0
                           },
