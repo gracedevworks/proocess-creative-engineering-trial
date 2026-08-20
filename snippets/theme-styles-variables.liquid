@@ -11,7 +11,7 @@
   {{ primary_font_bold_italic | font_face: font_display: 'swap' }}
 
   {%- liquid
-    assign font_body_family = settings.type_body_font.family, settings.type_body_font.fallback_families
+    assign font_body_family = settings.type_body_font.family
     assign font_body_style = settings.type_body_font.style
     assign font_body_weight = settings.type_body_font.weight
   %}
@@ -38,7 +38,7 @@
   {% endif %}
 
   {%- liquid
-    assign font_subheading_family = settings.type_subheading_font.family, settings.type_subheading_font.fallback_families
+    assign font_subheading_family = settings.type_subheading_font.family
     assign font_subheading_style = settings.type_subheading_font.style
     assign font_subheading_weight = settings.type_subheading_font.weight
   %}
@@ -65,7 +65,7 @@
   {% endif %}
 
   {%- liquid
-    assign font_heading_family = settings.type_heading_font.family, settings.type_heading_font.fallback_families
+    assign font_heading_family = settings.type_heading_font.family
     assign font_heading_style = settings.type_heading_font.style
     assign font_heading_weight = settings.type_heading_font.weight
   %}
@@ -92,7 +92,7 @@
   {% endif %}
 
   {%- liquid
-    assign font_accent_family = settings.type_accent_font.family, settings.type_accent_font.fallback_families
+    assign font_accent_family = settings.type_accent_font.family
     assign font_accent_style = settings.type_accent_font.style
     assign font_accent_weight = settings.type_accent_font.weight
   %}
@@ -660,3 +660,22 @@
     --cart-secondary-font-weight: var(--font-{{ settings.cart_price_font }}--weight);
   }
 {% endstyle %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: assign font_body_family = settings.type_body_font.family, settings.type_body_font.fallback_families
+  to: assign font_body_family = settings.type_body_font.family
+  position: 570..626
+- from: assign font_subheading_family = settings.type_subheading_font.family, settings.type_subheading_font.fallback_families
+  to: assign font_subheading_family = settings.type_subheading_font.family
+  position: 1668..1736
+- from: assign font_heading_family = settings.type_heading_font.family, settings.type_heading_font.fallback_families
+  to: assign font_heading_family = settings.type_heading_font.family
+  position: 2878..2940
+- from: assign font_accent_family = settings.type_accent_font.family, settings.type_accent_font.fallback_families
+  to: assign font_accent_family = settings.type_accent_font.family
+  position: 4096..4156
+{% endcomment %}
